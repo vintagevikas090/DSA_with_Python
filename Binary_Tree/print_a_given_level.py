@@ -1,0 +1,51 @@
+'''(print a given Level)'''
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+        
+def print_tree(root):
+    if root == None:
+        return
+    print('node =', root.data, end = ":--> ")
+    if root.left is not None:
+        print('left = ', root.left.data, end = ", ")
+    if root.right is not None:
+        print('right = ', root.right.data, end = " ")
+    print()
+    print_tree(root.left)
+    print_tree(root.right)
+    
+
+def take_input_tree():
+    rootData = int(input())
+    if rootData == -1:
+        return None
+    root = Node(rootData)
+    print('Enter the left child value for ', rootData)
+    leftChild = take_input_tree()
+    print('Enter the right child value for ', rootData)
+    rightChild = take_input_tree()
+    root.left = leftChild
+    root.right = rightChild
+    return root
+
+def print_given_level(root, level):
+    if root is None:
+        print(-1, end = " ")
+        return
+    if level == 0:
+        print(root.data, end = " ")
+        return 
+    else:
+        print_given_level(root.left, level-1)
+        print_given_level(root.right, level-1)
+    
+print('Enter the root value')
+root = take_input_tree()
+print_tree(root)
+lev = int(input())
+print('Node at the given level are as following: ')
+print_given_level(root, lev)
