@@ -1,65 +1,35 @@
-    '''Search in BST'''
+'''
+You are given the root of a binary search tree (BST) and an integer val.
 
-class Node:
-    def __init__(self, data):
-        self.data = data
-        self.left = None
-        self.right = None
+Find the node in the BST that the node's value equals val and return the subtree rooted with that node. 
+If such a node does not exist, return null.
+'''
 
-def print_Tree(root):
-    if root is None:
-        return 
-    q = [root]
-    while q:
-        curr = q.pop(0)
-        print(curr.data, end = ":")
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def searchBST(self, root, val: int):
+        if root is None:
+            return None
+        # if val == root.val:
+        #     return root
+        # elif val < root.val:
+        #     return self.searchBST(root.left, val)
+        # else:
+        #     return self.searchBST(root.right, val)
         
-        if curr.left is not None:
-            leftData = curr.left.data
-            print('L:', leftData ,end=",")
-            q.append(curr.left)
-        else:
-            print('L:-1', end = ',')
-            
-        if curr.right is not None:
-            rightData = curr.right.data
-            print("R:", rightData, end = "")
-            q.append(curr.right)
-        else:
-            print('R:-1', end = "")
+        # return None
 
-        print()
-        
-def insert_in_BST(root, val):
-    if val == -1:
-        return None
-    newNode = Node(val)
-    if root == None:
-        root = newNode
+        while root is not None:
+            if val == root.val:
+                return root
+            elif val < root.val:
+                root = root.left
+            else:
+                root = root.right
+
         return root
-    if val <= root.data:
-        root.left = insert_in_BST(root.left, val)
-    else:
-        root.right = insert_in_BST(root.right, val)
-    return root
-
-def Build_BST(li):
-    rootData = li[0]
-    root = Node(rootData)
-    for i in li[1:]:
-        root = insert_in_BST(root, i)
-    return root
-
-def search(root, val):
-    if val == -1 or root is None:
-        return False
-    if root.data == val:
-        return True
-    elif val < root.data:
-        return search(root.left, val)
-    else:
-        return search(root.right, val)
-    
-values = [int(i) for i in input().split()]
-root = Build_BST(values)
-print_Tree(root)
