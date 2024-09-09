@@ -49,8 +49,23 @@ def countBracketReversals(exp):
             if s.isEmpty():
                 s.push(i)
             else:
-                
-    if s.size() % 2 == 0:
-        return s.size()/2
-    else:
-        return -1
+                if s[-1] != i:
+                    s.push(i)
+                else:
+                    s.pop()
+# After processing, the stack will contain unmatched brackets
+# Unbalanced brackets can either be '{' or '}'
+    reversals = 0
+    while stack:
+        top1 = stack.pop()
+        top2 = stack.pop()
+        
+        # If both are the same, like "{{" or "}}", one reversal is needed
+        if top1 == top2:
+            reversals += 1
+        else:                           # ***
+            # If they are different, like "{}" or "}{", two reversals are needed
+            reversals += 2
+
+#(***)
+# this {} is not balanced, becz didn't occur consecutively in string -> that's why they are in the mismatch stack 
