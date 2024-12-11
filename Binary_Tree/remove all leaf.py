@@ -35,13 +35,13 @@ def take_input_tree():
 def isLeaf(node):
     return node.left == None and node.right == None
 
-def remove_Leaf(root, parent = None):
+def remove_Leaf(root):
     if root is None:
         return root
     if isLeaf(root):
         return None
-    root.left = remove_Leaf(root.left, root)
-    root.right = remove_Leaf(root.right, root)
+    root.left = remove_Leaf(root.left)
+    root.right = remove_Leaf(root.right)
     return root
         
 
