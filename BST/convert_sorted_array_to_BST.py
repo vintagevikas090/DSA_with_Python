@@ -30,18 +30,6 @@ def print_Tree(root):
 
         print()
         
-def insert_in_BST(root, val):
-    if val == -1:
-        return None
-    newNode = Node(val)
-    if root == None:
-        root = newNode
-        return root
-    if val <= root.data:
-        root.left = insert_in_BST(root.left, val)
-    else:
-        root.right = insert_in_BST(root.right, val)
-    return root
 
 def Build_BST(arr):
     l = len(arr)
