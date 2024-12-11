@@ -37,7 +37,7 @@ def Build_tree(InO, PreO, n):
     rootData = PreO[0]
     rootIndex = InO.index(rootData)
     left_data_of_root = InO[:rootIndex]
-    right_data_of_root = PreO[rootIndex+1:]
+    right_data_of_root = InO[rootIndex+1:]
     left_nodes_no = len(left_data_of_root)
     right_nodes_no = n - left_nodes_no -1
     
