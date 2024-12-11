@@ -48,7 +48,7 @@ class Solution:
             return res
         s += chr(root.val + 97)
         if root.left is None and root.right == None:
-            res.append(s[::-1]) #@
+            res.append(s[::-1]) 
             return res
         self.find_paths(root.left, res, s)
         self.find_paths(root.right, res, s)
