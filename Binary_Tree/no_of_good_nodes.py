@@ -57,6 +57,4 @@ class Solution:
         return cnt
 
     def goodNodes(self, root: TreeNode) -> int:
-        if root is None:
-            return 0
         return self.helper(root, root.val)
