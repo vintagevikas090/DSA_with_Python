@@ -40,10 +40,8 @@ def remove_Leaf(root, parent = None):
         return root
     if isLeaf(root):
         return None
-    left_part = remove_Leaf(root.left, root)
-    right_part = remove_Leaf(root.right, root)
-    root.left = left_part
-    root.right = right_part
+    root.left = remove_Leaf(root.left, root)
+    root.right = remove_Leaf(root.right, root)
     return root
         
 
