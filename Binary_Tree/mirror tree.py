@@ -42,14 +42,6 @@ def mirrorBinaryTree(root) :
     temp = root.right
     root.right = root.left
     root.left = temp 
-
-#     newLeft  = mirrorBinaryTree(root.left)
-#     newRight = mirrorBinaryTree(root.right)
-
-#     root.left = newLeft
-#     root.right = newRight
-    
-    # better thing to do
     
     root.left = mirrorBinaryTree(root.left)
     root.right = mirrorBinaryTree(root.right)
